@@ -1,0 +1,12 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+    <div class="ui breadcrumb">
+        <a href="{% url 'accounts:top' %}" class="section">TOP</a>
+        <i class="right angle icon divider"></i>
+        <a class="active section">ログアウト完了</a>
+    </div>
+    <div class="content">
+        <div class="header"><h3>ログアウトしました。</h3></div>
+        <p><a href="{% url 'accounts:top' %}">TOPへ戻る</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+    {% if user.id  %}
+    <p>ログインしました．</p>
+    <p>こんにちは，{{ user.username }}さん</p>
+    <a href="{% url 'accounts:logout' %}">ログアウトする</a>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">ログイン</a>
+    <a href="{% url 'accounts:signup' %}">アカウント作成</a>
+    {% endif %}
+{% endblock %}
