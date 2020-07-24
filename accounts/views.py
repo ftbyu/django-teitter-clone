@@ -8,12 +8,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 
+
 def top(request):
-    return render(request, 'accounts/top.html', {})
+    return render(request, 'accounts/top.html')
 
 class SignUp(CreateView):
     form_class = SignUpForm
-    template_name = 'accounts/signup.html'
+    template_name = 'registration/signup.html'
     success_url = reverse_lazy('accounts:profile')
 
     def form_valid(self, form):
