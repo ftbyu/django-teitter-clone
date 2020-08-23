@@ -10,6 +10,18 @@
     <body>
         <div class="page-header">
             <h1><a href="/">Twitter</a></h1>
+            <ul class="nav navbar-nav navbar-righ">
+                {% if user.id is None %}
+                <!-- ログインしていない -->
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">新規登録</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">ログイン</a></li>
+                {% else %}
+                <!-- ログインしていたらこっち -->
+                <li class="nav-item"><a class="nav-link" href="{% url 'tweets:index' %}">投稿一覧</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'tweets:new' %}">新規投稿</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">ログアウト</a></li>
+                {% endif %}
+            </ul>
         </div>
         <div class="content container">
             <div class="row">

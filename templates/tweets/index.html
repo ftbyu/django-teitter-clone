@@ -1,0 +1,47 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<section>
+    <!-- もし投稿があれば一覧を表示する -->
+    {% if tweet_list %}
+    {% for tweet in tweet_list %}
+    <div class="row p-10 text-lefti">
+        <div class="col-10 offset-1">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="{% url 'accounts:profile'%}" class="text-dark">
+                            {{tweet.user.username }}
+                            {{tweet.text}}
+                        </a>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <div class="like_list">
+                        <!-- ここにお気に入り機能を実装していく -->
+                    </div>
+                     <div class="card-hedder">
+                        コメントする
+                    </div>
+                    <div class="pt-2">
+                        <small>
+                            投稿時間{{ tweet.created_at|date:'Y-m-d H:i' }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="row p-5">
+        <div class="col-6 offset-3 text-center">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <p class="lead"><a href="{% url 'tweets:new' %}">投稿</a>して他のユーザーに見つけてもらおう</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}
