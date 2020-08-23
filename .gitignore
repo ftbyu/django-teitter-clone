@@ -13,6 +13,8 @@ db.sqlite3-journal
 media
 static
 myvenv
+Pipfile
+Pipfile.lock
 run.sh
 web_run.sh
 .DS_Store
