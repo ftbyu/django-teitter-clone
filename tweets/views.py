@@ -4,7 +4,7 @@ from django.views.generic import ListView
 from django.urls import reverse_lazy
 
 from .forms import TweetForm
-from .models import Tweet
+from .models import Tweet,Like
 
 
 # 投稿画面
@@ -30,5 +30,17 @@ class Index(ListView):
     paginate_by = 100
     # 投稿日を降順で並べる
     queryset = Tweet.objects.order_by('created_at').reverse()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        like_list = {}
+        comment_list = {}
+        # すでに取得されている投稿リストを一件づつ取り出す
+        for post in context['post_list']:
+            # 取り出したものから「いいね!」を探してlike_listに格納する
+            like_list[post.id] = Like.objects.filter(post=post)
+        context['like_list'] = like_list
+        return context
+
 
 
